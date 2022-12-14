@@ -1,0 +1,9 @@
+# Напишите программу для. проверки истинности утверждения ¬(X ⋁ Y ⋁ Z) = ¬X ⋀ ¬Y ⋀ ¬Z для всех значений предикат.
+
+for x in range(0, 2):
+    for y in range(0, 2):
+        for z in range(0, 2):
+            if (not x or not y or not z) == (not x and not y and not z):
+                print(f'{x} {y} {z} true')
+            else:
+                print(f'{x} {y} {z} false')
