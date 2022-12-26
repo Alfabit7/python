@@ -18,3 +18,10 @@ while number > 0:
     binaryNumber = str(number % 2)+binaryNumber
     number = number//2
 print(f'Число {userNumber} в двоичной системе равно: {binaryNumber}')
+
+
+# решение 2
+# x = int(input("Введите любое натуральное число: "))
+# n = bin(x)
+# print()
+# print("Вид введенного числа в двоичной системе счисления :", n)
