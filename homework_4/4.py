@@ -2,6 +2,8 @@
 # Пример:
 # - k=2 => 2*x² + 4*x + 5 = 0 или x² + 5 = 0 или 10*x² = 0
 import random
+
+
 def Generate_polynomial():
     poli_all = ''
     newList = []
@@ -35,5 +37,6 @@ def Generate_polynomial():
 
     with open("homework_4/polinomial.txt", "w") as somefile:
         somefile.write(poli_all)
-        
+
+
 Generate_polynomial()
