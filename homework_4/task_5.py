@@ -97,3 +97,80 @@ print(result_str)
 print()
 with open("homework_4/sum_polinomial.txt", "w") as somefile:
     somefile.write(result_str)
+
+
+# РЕШЕНИЕ2
+# import random
+# # формируем словарь где ключ это степень, а значение это коээфициент Х многочлена
+
+# def Generate_polinomial_dict():
+#     user_number = int(input('Введите число, коэфицент многочлена: '))
+#     my_dict = {}
+#     print()
+#     while user_number != -1:
+#         my_dict[user_number] = random.randint(1, 100)
+#         user_number -= 1
+#     return my_dict
+
+# # Формируем строку polinomial_str многочлена  из словаря my_dict где ключ степень значение коээфициент Х
+
+
+# def Generate_string_polinomial(my_dict: dict):
+#     polinomial_str = ''
+#     char_x = 'x'
+#     char_pow = '**'
+#     char_plus = ' + '
+#     for value, ratio in my_dict.items():
+#         if value != 1 and value != 0:
+#             polinomial_str = polinomial_str + \
+#                 str(ratio) + char_x + char_pow + str(value) + char_plus
+#         elif value == 0:
+#             polinomial_str = polinomial_str+char_plus+str(ratio)
+#         else:
+#             polinomial_str = polinomial_str + str(ratio) + char_x
+#     return polinomial_str
+
+# # Строку многочлена конвертит в словарь где степень это ключ коэффициент это значение
+
+
+# def Parsing_string_polinomial_to_dict(polinomial: str):
+#     polinomial = polinomial.split('+ ')
+#     new_dict = {}
+#     j = len(polinomial)-1
+#     for el in polinomial:
+#         x_index = el.find('x')
+#         if x_index != -1:
+#             new_dict[j] = (el[:x_index])
+#         else:
+#             new_dict[j] = el
+#         j -= 1
+#     return new_dict
+
+# polinomial__dict_1 = Generate_polinomial_dict()
+# polinomial__dict_2 = Generate_polinomial_dict()
+# polinomial_1 = Generate_string_polinomial(polinomial__dict_1)
+# polinomial_2 = Generate_string_polinomial(polinomial__dict_2)
+
+
+# # Находим большой и маленьккий словарь по длине
+# if len(polinomial__dict_1) < len(polinomial__dict_2):
+#     min_dict = polinomial__dict_1
+#     max_dict = polinomial__dict_2
+# else:
+#     min_dict = polinomial__dict_2
+#     max_dict = polinomial__dict_1
+
+# # Складываем два словаря
+# sum_dict = {}
+# i = len(max_dict)-1
+# while i != -1:
+#     if i >= len(min_dict):
+#         sum_dict[i] = max_dict[i]
+#     else:
+#         sum_dict[i] = int(max_dict[i])+int(min_dict[i])
+#     i -= 1
+
+# sum_dict = Generate_string_polinomial(sum_dict)
+# print(f'polinomial_1= {polinomial_1}')
+# print(f'polinomial_2= {polinomial_2}')
+# print(f'sum_dict=  {sum_dict}')
