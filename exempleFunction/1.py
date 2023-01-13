@@ -65,3 +65,24 @@
 #         small_num = Find_small_index_arr(arr)
 #         new_arr.append(arr.pop(small_num))
 #     return new_arr
+
+
+# Рекурсивная функция быстрой сортировки массива. Берет первый элемент как опорную точку(pivot) и слева от нее помещает все элементы меньше значения этой  точки справа значения больше этой точки
+# Если значения повторяются она их удаляет
+# from random import randrange
+# myList = [randrange(0, 100) for i in range(randrange(7, 30))]
+# print(myList)
+
+# def quickSort(arr: list):
+#     if len(arr) < 2:
+#         return arr  # Базовый случай массивы с 0 и 1 элементом уже отсортированы
+#     else:
+#         pivot = arr[0]  # рекурсивный случай pivot- точка опоры
+#         # less Подмассив всех элементов массива которые меньше опорной точки pivot
+#         less = [i for i in arr[1:] if i < pivot]
+#         # greater Подмассив всех элементов болльше опорной точки pivot
+#         greater = [i for i in arr[1:] if i > pivot]
+#         return quickSort(less)+[pivot]+quickSort(greater)
+# print(quickSort(myList))
+# print(myList)
+# END Рекурсивная функция быстрой сортировки массива.
