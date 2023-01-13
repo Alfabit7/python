@@ -13,3 +13,20 @@
 # 6A1F2D7C1A17E
 # (5 - количество единиц, далее сама единица, 4 - количество двоек, далее сама двойка и т.д)
 # Модуль восстановления работет в обратную сторону - из строки выходных данных, получить строку входных данных.
+
+count = 0
+myDict = {}
+text = '111112222334445557'
+print(text)
+for i in range(len(text)-1):
+    if text[i] == text[i+1]:
+        count += 1
+        # print(text[i], end=' ')
+    else:
+
+        myDict[count+1] = text[i]
+        count = 0
+
+myDict[count+1] = text[-1:]
+
+print(myDict)
