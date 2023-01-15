@@ -14,19 +14,49 @@
 # (5 - количество единиц, далее сама единица, 4 - количество двоек, далее сама двойка и т.д)
 # Модуль восстановления работет в обратную сторону - из строки выходных данных, получить строку входных данных.
 
-count = 0
-myDict = {}
-text = '111112222334445557'
+count = 1
+text = '1112222442334555556677'
+# text = 'AAAAAAFDDCCCCCCCAEEEEEEEEEEEEEEEEE'
+newText = ''
 print(text)
+
+# Кодирует
 for i in range(len(text)-1):
     if text[i] == text[i+1]:
         count += 1
-        # print(text[i], end=' ')
+        if i == len(text)-2:  # Добавляет последний символ если он и предыдущий повторяются
+            newText += str(count)+str(text[i+1])
     else:
+        newText += str(count)+str(text[i])
+        count = 1
+        if i == len(text)-2:  # Добавляет последний символ если он не повторяется
+            newText += str(count)+str(text[i+1])
+print(newText)
 
-        myDict[count+1] = text[i]
-        count = 0
 
-myDict[count+1] = text[-1:]
+# Раскодирует для букв
+# newList = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+# count = ''
+# oldText = ''
+# for i in range(len(newText)):
+#     if newText[i] in newList:
+#         count += str(newText[i])
+#     else:
+#         oldText += newText[i]*int(count)
+#         count = ''
+# print(oldText)
 
-print(myDict)
+
+# Раскодирует для цифр
+count = 0
+oldText = ''
+for i in range(len(newText)-1):
+    if i == 0:
+        count = int(newText[i])
+        oldText += str(str(newText[i+1])*count)
+
+    elif i % 2 == 0 and i != 0:
+        count = int(newText[i])
+        oldText += str(str(newText[i+1])*count)
+
+print(oldText)
