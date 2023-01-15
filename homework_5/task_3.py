@@ -13,50 +13,68 @@
 # 6A1F2D7C1A17E
 # (5 - количество единиц, далее сама единица, 4 - количество двоек, далее сама двойка и т.д)
 # Модуль восстановления работет в обратную сторону - из строки выходных данных, получить строку входных данных.
-
+import numbers
 count = 1
-text = '1112222442334555556677'
-# text = 'AAAAAAFDDCCCCCCCAEEEEEEEEEEEEEEEEE'
-newText = ''
-print(text)
+myTextNumber = '1112222442334555556677'
+myTextLetters = 'AAAAAAFDDCCCCCCCAEEEEEEEEEEEEEEEEE'
+text = 'AAAAAAFDDCCCCCCCAEEEEEEEEEEEEEEEEE'
 
-# Кодирует
-for i in range(len(text)-1):
-    if text[i] == text[i+1]:
-        count += 1
-        if i == len(text)-2:  # Добавляет последний символ если он и предыдущий повторяются
-            newText += str(count)+str(text[i+1])
+
+# Кодирует строку
+def Encodes(text: str):
+    print(f'Source text: {text}')
+    newText = ''
+    count = 1
+    for i in range(len(text)-1):
+
+        if text[i] == text[i+1]:
+            count += 1
+            if i == len(text)-2:  # Добавляет последний символ если он и предыдущие повторяются
+                newText += str(count)+str(text[i+1])
+        else:
+            newText += str(count)+str(text[i])
+            count = 1
+            if i == len(text)-2:  # Добавляет последний символ если он не повторяется
+                newText += str(count)+str(text[i+1])
+    print(f'Encodes text: {newText}')
+    return newText
+
+# Функция раскодирует строку
+
+
+def Decodes(text):
+    if text.isnumeric():
+        # Раскодирует для цифр
+        count = 0
+        oldText = ''
+        for i in range(len(text)-1):
+            if i == 0:
+                count = int(text[i])
+                oldText += str(str(text[i+1])*count)
+
+            elif i % 2 == 0 and i != 0:
+                count = int(text[i])
+                oldText += str(str(text[i+1])*count)
+        print(f'Decodes text: {oldText}')
     else:
-        newText += str(count)+str(text[i])
-        count = 1
-        if i == len(text)-2:  # Добавляет последний символ если он не повторяется
-            newText += str(count)+str(text[i+1])
-print(newText)
+        # Раскодирует для букв
+        newList = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+        count = ''
+        oldText = ''
+        for i in range(len(text)):
+            if text[i] in newList:
+                count += str(text[i])
+            else:
+                oldText += text[i]*int(count)
+                count = ''
+        print(f'Decodes text: {oldText}')
+    return oldText
 
 
-# Раскодирует для букв
-# newList = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-# count = ''
-# oldText = ''
-# for i in range(len(newText)):
-#     if newText[i] in newList:
-#         count += str(newText[i])
-#     else:
-#         oldText += newText[i]*int(count)
-#         count = ''
-# print(oldText)
-
-
-# Раскодирует для цифр
-count = 0
-oldText = ''
-for i in range(len(newText)-1):
-    if i == 0:
-        count = int(newText[i])
-        oldText += str(str(newText[i+1])*count)
-
-    elif i % 2 == 0 and i != 0:
-        count = int(newText[i])
-        oldText += str(str(newText[i+1])*count)
-
-print(oldText)
+print()
+encodeTexLetters = Encodes(myTextLetters)
+Decodes(encodeTexLetters)
+print()
+encodeTextNumber = Encodes(myTextNumber)
+Decodes(encodeTextNumber)
+print()
