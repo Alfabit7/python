@@ -15,12 +15,12 @@
 # Модуль восстановления работет в обратную сторону - из строки выходных данных, получить строку входных данных.
 import numbers
 count = 1
-myTextNumber = '1112222442334555556677'
-myTextLetters = 'AAAAAAFDDCCCCCCCAEEEEEEEEEEEEEEEEE'
-text = 'AAAAAAFDDCCCCCCCAEEEEEEEEEEEEEEEEE'
-
+myTextNumber = '11122224423345555566778'
+myTextLetters = 'AAAAAAFDDCCCCCCCAEEEEEEEEEEEEEEEEEP'
 
 # Кодирует строку
+
+
 def Encodes(text: str):
     print(f'Source text: {text}')
     newText = ''
