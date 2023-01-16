@@ -9,15 +9,13 @@
 #    пока количество конфет больше 28 игрокик продолжают делать ход
 import random
 
-
 # Первым ходит игрок угадвший число num от 0 до 2
 namePlayer_1 = 'Игрок №1'
 namePlayer_2 = 'Игрок №2'
 
 
 def randomNumber():
-    # num = random.randint(0, 2)
-    num = 5
+    num = random.randint(0, 2)
     return num
 
 

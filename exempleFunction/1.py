@@ -9,9 +9,28 @@
 #             print('Ошибка. Требуется ввод числа')
 #     return number
 
+# END Проверяет, что введено число, а не текст
+
+# Проверяет что пользователь ввел число с диапазона от 1 д 9
+# def inputNumber():
+#     while True:
+#         value = input('Value between 0 and 100:')
+#         try:
+#             value = int(value)
+#         except ValueError:
+#             print('Valid number, please')
+#             continue
+#         if 0 < value <= 10:
+#             break
+#         else:
+#             print('Valid range, please: 0-100')
+#     return value
+
+# END Проверяет что пользователь ввел число с диапазона от 1 д 9
+
+
 # Функция бинарного поиска элемента по сортированному списку
 # myList = [1, 2, 3, 4, 5, 6, 25, 47, 4, 7]
-
 # def BynarySearch(arr: list, searchNumber: int):
 #     start = 0
 #     end = len(arr)-1
@@ -26,9 +45,9 @@
 #             start = mid+1
 #     return None
 
-
 # a = BynarySearch(myList, 4)
 # print(f'Индекс элемента {myList[a]} равен {a} ')
+
 # END  Функция бинарного поиска элемента по сортированному списку
 
 # import random
