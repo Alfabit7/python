@@ -43,11 +43,12 @@ player_2 = 'Игрок № 2'
 winner = player_1
 print(f'Ходит  {winner}')
 
+# Жеребьевка на первый ход
 while True:
     if winner == player_1:
         userInput = MovePlayer()
         if guessNumber == userInput:
-            print(f'Первым ходит   {player_1}')
+            print(f'Первым ходит  {player_1}')
             break
 
         else:
@@ -56,7 +57,7 @@ while True:
             userInput = MovePlayer()
     else:
         if guessNumber == userInput:
-            print(f'Первым ходит  {player_2}')
+            print(f'Первым ходит {player_2}')
             break
 
         else:
