@@ -2,10 +2,15 @@
 # создаем игру и окно
 import random
 fieldGameList = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-for i in fieldGameList:
-    for j in i:
-        print(j, end=' ')
-    print()
+# fieldGameList = '1 2 3 4 5 6 7 8 9'
+
+
+def RenderFieldGame():
+    for i in fieldGameList:
+        for j in i:
+            print(j, end=' ')
+        print()
+
 
 # Функция проверяет что пользователь ввел число от 1 до 10
 
@@ -35,31 +40,77 @@ def randomNumber():
 # guessNumber = randomNumber()
 guessNumber = 2
 
-print('Жеребьевка. Ходит первым игрок угадавший число')
+print('Жеребьевка. Крестиками ходит первым игрок угадавший число')
 numStartRange = 1
 numEndRange = 2
 player_1 = 'Игрок № 1'
 player_2 = 'Игрок № 2'
-winner = player_1
-print(f'Ходит  {winner}')
+namePlayer = player_1
+print(f'Ходит  {namePlayer}')
 
 # Жеребьевка на первый ход
 while True:
-    if winner == player_1:
+    if namePlayer == player_1:
         userInput = MovePlayer()
         if guessNumber == userInput:
             print(f'Первым ходит  {player_1}')
+            symbolStep = 'x'
             break
 
         else:
-            winner = player_2
-            print(f'Ходит  {winner}')
+            namePlayer = player_2
+            print(f'Ходит  {namePlayer}')
             userInput = MovePlayer()
     else:
         if guessNumber == userInput:
             print(f'Первым ходит {player_2}')
+            symbolStep = 'x'
             break
 
         else:
-            winner = player_1
-            print(f'Ходит  {winner}')
+            namePlayer = player_1
+            print(f'Ходит  {namePlayer}')
+# END Жеребьевка на первый ход
+
+numStartRange = 1
+numEndRange = 9
+RenderFieldGame()
+
+
+def ChangeCell():
+    for el in fieldGameList:
+        if stepPlayer in el:
+            for i in range(len(el)):
+                if el[i] == stepPlayer:
+                    el[i] = symbolStep
+                    symbolStep = 'x'
+    return fieldGameList
+
+
+flagWinner = 1
+while flagWinner < 10:
+    print(f'Ходит игрок {namePlayer}')
+    if namePlayer == player_1:
+        stepPlayer = MovePlayer()
+        for el in fieldGameList:
+            if stepPlayer in el:
+                for i in range(len(el)):
+                    if el[i] == stepPlayer:
+                        el[i] = symbolStep
+                        namePlayer = player_2
+                        symbolStep = 'o'
+
+        RenderFieldGame()
+    else:
+        namePlayer = player_1
+        stepPlayer = MovePlayer()
+
+        for el in fieldGameList:
+            if stepPlayer in el:
+                for i in range(len(el)):
+                    if el[i] == stepPlayer:
+                        el[i] = symbolStep
+                        symbolStep = 'x'
+
+        RenderFieldGame()
+    flagWinner += 1
