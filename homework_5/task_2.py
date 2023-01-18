@@ -77,42 +77,30 @@ numEndRange = 9
 RenderFieldGame()
 
 
-def ChangeCell():
+def ChangeCell(stepChar):
     for el in fieldGameList:
         if stepPlayer in el:
             for i in range(len(el)):
                 if el[i] == stepPlayer:
                     el[i] = symbolStep
-                    symbolStep = 'x'
+                    # symbolStep = 'x'
     return fieldGameList
 
 
-flagWinner = 1
-while flagWinner < 10:
+maxStep = 9
+flagWinner = True
+while maxStep != 10 or flagWinner:
     print(f'Ходит игрок {namePlayer}')
     if namePlayer == player_1:
         stepPlayer = MovePlayer()
-        for el in fieldGameList:
-            if stepPlayer in el:
-                for i in range(len(el)):
-                    if el[i] == stepPlayer:
-                        el[i] = symbolStep
-                        namePlayer = player_2
-                        symbolStep = 'o'
-
+        symbolStep = 'x'
+        ChangeCell(symbolStep)
         RenderFieldGame()
+
     else:
         namePlayer = player_1
         stepPlayer = MovePlayer()
-
-        for el in fieldGameList:
-            if stepPlayer in el:
-                for i in range(len(el)):
-                    if el[i] == stepPlayer:
-                        el[i] = symbolStep
-                        symbolStep = 'x'
-
+        symbolStep = 'o'
+        ChangeCell(symbolStep)
         RenderFieldGame()
     flagWinner += 1
-
-# afgfg
