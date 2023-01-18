@@ -34,8 +34,7 @@ def randomNumber():
     return num
 
 
-# guessNumber = randomNumber()
-guessNumber = 2
+guessNumber = randomNumber()
 
 print('Жеребьевка. Крестиками ходит первым игрок угадавший число')
 numStartRange = 1
@@ -72,7 +71,6 @@ while True:
 numStartRange = 1
 numEndRange = 9
 RenderFieldGame()
-
 # Функция изменяет клетку на х или о
 
 
@@ -98,9 +96,11 @@ def CheckedCell(step):
         checkList.append(step)
         return True
 
+# Функция кто победил
+
 
 def checkedWinner(arr):
-    if arr[0][0] == arr[0][1] == arr[0][2] or arr[1][0] == arr[1][1] == arr[1][2] or arr[2][0] == arr[2][1] == arr[2][2] or arr[0][0] == arr[1][0] == arr[2][0] or arr[0][1] == arr[1][1] == arr[2][1] or arr[0][2] == arr[1][2] == arr[2][2] or arr[0][0] == arr[1][1] == arr[2][2] or arr[0][2] == arr[1][1] == arr[0][2]:
+    if arr[0][0] == arr[0][1] == arr[0][2] or arr[1][0] == arr[1][1] == arr[1][2] or arr[2][0] == arr[2][1] == arr[2][2] or arr[0][0] == arr[1][0] == arr[2][0] or arr[0][1] == arr[1][1] == arr[2][1] or arr[0][2] == arr[1][2] == arr[2][2] or arr[0][0] == arr[1][1] == arr[2][2] or arr[0][2] == arr[1][1] == arr[2][0]:
         return False
     else:
         return True
@@ -109,7 +109,7 @@ def checkedWinner(arr):
 maxStep = 9
 step = 0
 flagWinner = True
-while step < maxStep or flagWinner:
+while step < maxStep and flagWinner:
     print(f'Ходит игрок {namePlayer}')
     if namePlayer == player_1:
         stepPlayer = MovePlayer()
@@ -118,14 +118,16 @@ while step < maxStep or flagWinner:
             stepPlayer = MovePlayer()
             a = CheckedCell(stepPlayer)
         else:
-            flagWinner = checkedWinner(fieldGameList)
             symbolStep = 'x'
             ChangeCell(symbolStep)
-            namePlayer = player_2
-            RenderFieldGame()
-
+            flagWinner = checkedWinner(fieldGameList)
+            if flagWinner == False:
+                break
+            else:
+                namePlayer = player_2
+                RenderFieldGame()
     else:
-        namePlayer = player_1
+
         stepPlayer = MovePlayer()
         a = CheckedCell(stepPlayer)
 
@@ -133,9 +135,13 @@ while step < maxStep or flagWinner:
             stepPlayer = MovePlayer()
             a = CheckedCell(stepPlayer)
         else:
-            flagWinner = checkedWinner(fieldGameList)
             symbolStep = 'o'
             ChangeCell(symbolStep)
-            RenderFieldGame()
-    print(f'step {step}')
+            flagWinner = checkedWinner(fieldGameList)
+            if flagWinner == False:
+                break
+            else:
+                namePlayer = player_1
+                RenderFieldGame()
     step += 1
+print(f'Победил {namePlayer}')
