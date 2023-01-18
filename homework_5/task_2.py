@@ -2,7 +2,6 @@
 # создаем игру и окно
 import random
 fieldGameList = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-# fieldGameList = '1 2 3 4 5 6 7 8 9'
 
 
 def RenderFieldGame():
@@ -13,8 +12,6 @@ def RenderFieldGame():
 
 
 # Функция проверяет что пользователь ввел число от 1 до 10
-
-
 def MovePlayer():
     while True:
         value = input(f'Введите число от {numStartRange} до {numEndRange}: ')
@@ -76,6 +73,8 @@ numStartRange = 1
 numEndRange = 9
 RenderFieldGame()
 
+# Функция изменяет клетку на х или о
+
 
 def ChangeCell(stepChar):
 
@@ -87,6 +86,7 @@ def ChangeCell(stepChar):
     return fieldGameList
 
 
+# Функция проверяет что клетка не занята
 checkList = []
 
 
@@ -99,9 +99,16 @@ def CheckedCell(step):
         return True
 
 
+def checkedWinner(arr):
+    if arr[0][0] == arr[0][1] == arr[0][2] or arr[1][0] == arr[1][1] == arr[1][2] or arr[2][0] == arr[2][1] == arr[2][2] or arr[0][0] == arr[1][0] == arr[2][0] or arr[0][1] == arr[1][1] == arr[2][1] or arr[0][2] == arr[1][2] == arr[2][2] or arr[0][0] == arr[1][1] == arr[2][2] or arr[0][2] == arr[1][1] == arr[0][2]:
+        return False
+    else:
+        return True
+
+
 maxStep = 9
 step = 0
-flagWinner = False
+flagWinner = True
 while step < maxStep or flagWinner:
     print(f'Ходит игрок {namePlayer}')
     if namePlayer == player_1:
@@ -111,6 +118,7 @@ while step < maxStep or flagWinner:
             stepPlayer = MovePlayer()
             a = CheckedCell(stepPlayer)
         else:
+            flagWinner = checkedWinner(fieldGameList)
             symbolStep = 'x'
             ChangeCell(symbolStep)
             namePlayer = player_2
@@ -125,7 +133,7 @@ while step < maxStep or flagWinner:
             stepPlayer = MovePlayer()
             a = CheckedCell(stepPlayer)
         else:
-
+            flagWinner = checkedWinner(fieldGameList)
             symbolStep = 'o'
             ChangeCell(symbolStep)
             RenderFieldGame()
