@@ -78,29 +78,56 @@ RenderFieldGame()
 
 
 def ChangeCell(stepChar):
+
     for el in fieldGameList:
         if stepPlayer in el:
             for i in range(len(el)):
                 if el[i] == stepPlayer:
                     el[i] = symbolStep
-                    # symbolStep = 'x'
     return fieldGameList
 
 
+checkList = []
+
+
+def CheckedCell(step):
+    if step in checkList:
+        print('Это клетка уже занята, введите номер другой свободной клетки')
+        return False
+    else:
+        checkList.append(step)
+        return True
+
+
 maxStep = 9
-flagWinner = True
-while maxStep != 10 or flagWinner:
+step = 0
+flagWinner = False
+while step < maxStep or flagWinner:
     print(f'Ходит игрок {namePlayer}')
     if namePlayer == player_1:
         stepPlayer = MovePlayer()
-        symbolStep = 'x'
-        ChangeCell(symbolStep)
-        RenderFieldGame()
+        a = CheckedCell(stepPlayer)
+        while not a:
+            stepPlayer = MovePlayer()
+            a = CheckedCell(stepPlayer)
+        else:
+            symbolStep = 'x'
+            ChangeCell(symbolStep)
+            namePlayer = player_2
+            RenderFieldGame()
 
     else:
         namePlayer = player_1
         stepPlayer = MovePlayer()
-        symbolStep = 'o'
-        ChangeCell(symbolStep)
-        RenderFieldGame()
-    flagWinner += 1
+        a = CheckedCell(stepPlayer)
+
+        while not a:
+            stepPlayer = MovePlayer()
+            a = CheckedCell(stepPlayer)
+        else:
+
+            symbolStep = 'o'
+            ChangeCell(symbolStep)
+            RenderFieldGame()
+    print(f'step {step}')
+    step += 1
