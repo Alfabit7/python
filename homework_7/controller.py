@@ -1,5 +1,6 @@
 import view
 import model
+import idSort
 
 
 path = 'database.csv'
@@ -8,7 +9,6 @@ path = 'database.csv'
 def ClickButton():
     data_base = model.load_file(path)[1]
     while True:
-
         num_menu = view.main_menu()
         if num_menu == '':
             print('Exit')
@@ -44,6 +44,9 @@ def ClickButton():
             model.unload_file('database.csv', data_base)
 
         elif num_menu == '7':
+            data_base = idSort.sortUserId(data_base)
+
+        elif num_menu == '8':
             edit_user_db = []
             num_user = view.inputNumber(
                 f'Введите строку редактируемого контакта от 1 до {len(data_base)}:', len(data_base))
