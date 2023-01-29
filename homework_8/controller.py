@@ -1,9 +1,18 @@
 import view
+import importList
+import initBase
 userNameDict = {}
 allUser = []
 allLessons = []
+importListUsers = 'namesUsersList.txt'
+importListLessons = 'lesson.txt'
+
 
 def start():
+    allUser = importList.createList(importListUsers)
+    allLessons = importList.createList(importListLessons)
+    userNameDict = initBase.loadList(allUser, allLessons)
+    initBase.generateGrade(allUser)
     while True:
         menu = view.ShowMenu()
         if menu == 1:
@@ -13,14 +22,13 @@ def start():
             if allLessons:
                 for lesson in allLessons:
                     userNameDict[name][lesson] = []
-            print(userNameDict)
 
         elif menu == 2:
             lesson = input('Введите название предмета: ')
             for name in allUser:
                 userNameDict[name][lesson] = []
             allLessons.append(lesson)
-            print(userNameDict)
+
         elif menu == 3:
             if allUser:
                 name = input('Введите имя ученика: ')
@@ -44,7 +52,6 @@ def start():
                 else:
                     grade = view.InputGrade()
                     userNameDict[name][lesson].append(grade)
-                    print(userNameDict)
             else:
                 print(
                     'Список предметов пуст сначала добавьте предмет, для этого выберите  пункт меню -2 ')
@@ -53,9 +60,11 @@ def start():
             name = input('Введите имя ученика: ')
             print(userNameDict[name])
         elif menu == 5:
-            print(f'Все ученики {allUser}')
+            print(f'Все ученики \n {allUser}')
         elif menu == 6:
-            print(f'Все предметы {allLessons}')
+            print(f'Все предметы \n {allLessons}')
+        elif menu == 7:
+            print(userNameDict)
         elif menu == '':
             print('exit')
             break

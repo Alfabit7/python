@@ -62,4 +62,4 @@ def find_cont(find_str: str, data_base: list) -> list:
     else:
         print()
         print(f'Контакта {find_str} в базе нет')
-        print()  
+        print()
