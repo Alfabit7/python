@@ -14,7 +14,7 @@ def loadList(allUser, allLessons):
 
 
 #  Функция для генерации оценок
-countGrade = 7
+countGrade = 2
 gradeLow = 1
 gradeHigth = 5
 

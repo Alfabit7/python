@@ -1,6 +1,9 @@
 import view
 import importList
 import initBase
+import scoreAverage
+
+
 userNameDict = {}
 allUser = []
 allLessons = []
@@ -65,6 +68,10 @@ def start():
             print(f'Все предметы \n {allLessons}')
         elif menu == 7:
             print(userNameDict)
+        elif menu == 8:
+            name = input('Введите имя ученика: ')
+            score = scoreAverage.ShowScoreAverage(userNameDict, name)
+            print(f'Средний бал ученика {name} = {score}')
         elif menu == '':
             print('exit')
             break
