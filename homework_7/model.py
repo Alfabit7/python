@@ -54,13 +54,12 @@ def find_cont(find_str: str, data_base: list) -> list:
     for item in data_base:
         if find_str.lower() in ' '.join(item).lower():  # не валуес тк лист
             find_data.append(item)
-
-    if find_data != []:
+    if len(find_data) != 0:
         for item in find_data:
             i = data_base.index(item)+1  # тк с нуля индекс
-        print(
-            f'{i:4} | {item[0]:13} | {item[1]:11} | {item[2]:12} | {item[3]}')
+            print(
+                f'{i:4} | {item[0]:13} | {item[1]:11} | {item[2]:12} | {item[3]}')
     else:
         print()
         print(f'Контакта {find_str} в базе нет')
-        print()
+        print()  
