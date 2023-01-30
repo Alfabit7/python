@@ -70,8 +70,12 @@ def start():
             print(userNameDict)
         elif menu == 8:
             name = input('Введите имя ученика: ')
-            score = scoreAverage.ShowScoreAverage(userNameDict, name)
+            score = scoreAverage.ShowScoreAverageUser(userNameDict, name)
             print(f'Средний бал ученика {name} = {score}')
+        elif menu == 9:
+            lesson = input('Введите название предмета: ')
+            score = scoreAverage.ShowScoreLesson(userNameDict, lesson)
+            print(f'Средний бал по предмету {lesson} = {score}')
         elif menu == '':
             print('exit')
             break
