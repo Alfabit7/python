@@ -75,7 +75,6 @@ while candy > 28:
         movePlayer = StepPlayer()
 
     candy -= movePlayer
-    print(f'movePlayer = {movePlayer}')
     print(f'candy = {candy}')
     if candy < 29 and winnerFlag == True:
         print(f'Победил {namePlayer_1} ')

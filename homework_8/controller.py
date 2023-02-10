@@ -2,7 +2,7 @@ import view
 import importList
 import initBase
 import scoreAverage
-
+import modExp
 
 userNameDict = {}
 allUser = []
@@ -76,6 +76,9 @@ def start():
             lesson = input('Введите название предмета: ')
             score = scoreAverage.ShowScoreLesson(userNameDict, lesson)
             print(f'Средний бал по предмету {lesson} = {score}')
+        elif menu == 10:
+            path = input('Введите название файла: ')
+            modExp.SaveBase(userNameDict, path)
         elif menu == '':
             print('exit')
             break
